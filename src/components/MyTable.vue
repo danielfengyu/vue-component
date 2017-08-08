@@ -1,12 +1,6 @@
 <template>
-		<div v-if="hasHLayObj(test)">
-			<div v-for="item in test.hLay" v-if="isObj(item)">
-				<my-table :test="item"></my-table>
-			</div>
-			<div v-else></div>
-		</div>
-		<div v-else>
-			<div v-for="item in test.vLay" v-if="isObj(item)">
+		<div>
+			<div v-for="item in (test.vLay||test.hLay)" v-if="isObj(item)">
 				<my-table :test="item"></my-table>
 			</div>
 			<div v-else></div>
@@ -18,35 +12,26 @@
 		name: "MyTable",
 		props: ['test'],
 		data(){
-			return {
-				layoutObj: {
-					hLay: [
-						"400",
-						{
-							vLay: [
-								"400",
-								"auto"
-							],
-						}
-					],
-				}
-			}
+			return {}
 		},
 		methods: {
-			hasHLayObj: function(obj){
-				if(obj.hasOwnProperty("hLay")){
-					return true;
-				}
-				return false;
-			},
-			hasVLayObj: function(obj){
-				if(obj.hasOwnProperty("vLay")){
+			hasLayObj: function(obj){
+				if(obj.hasOwnProperty("hLay")||obj.hasOwnProperty("vLay")){
 					return true;
 				}
 				return false;
 			},
 			isObj: function(item){
 				return typeof item === "object";
+			},
+			layoutArr:function(ob){
+				if(obj.hasOwnProperty("hLay")){
+					return obj.hLay;
+				}
+				if(obj.hasOwnProperty("vLay")){
+					return obj.vLay;
+				}
+				return [];
 			}
 		},
 		computed: {
