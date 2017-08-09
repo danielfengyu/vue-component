@@ -10,7 +10,7 @@
 		name:"MyApp",
 		data(){
 			return {
-				ok:false,
+				ok:true,
 				title: "My first app!",
 				content: "Paragraph 1"
 			}

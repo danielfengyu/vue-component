@@ -12,11 +12,12 @@
     <div id="body">
       <div id="siderbar">
         <div style="height:1000px;width:320px;">
-         <my-list></my-list>
+         <!--my-list></my-list>-->
+         <my-tree  v-for='data in treeData' :tree-data='data' :key="data.id"></my-tree>
         </div>
       </div>
-      <div class="content">
-        <my-table :test="layoutObj"></my-table>
+      <div id="content" class="content">
+        <my-layout :test="layoutObj"></my-layout>
       </div>
     </div>
   </div>
@@ -25,7 +26,59 @@
 <script>
   import MyApp from "./components/MyApp.vue";
   import MyList from "./components/MyList.vue";
-   import MyTable from "./components/MyTable.vue";
+  import MyLayout from "./components/MyLayout.vue";
+  import MyTree from "./components/MyTree.vue";
+
+  var data = [{
+        "id": "1",
+        "data": {
+            "menuName": "项目管理",
+            "menuCode": "",
+        },
+        "childTreeNode": [{
+            "id": "1_1",
+            "data": {
+                "menuName": "项目",
+                "menuCode": "BusProject",
+            },
+            "childTreeNode": []
+        }, {
+            "id": "1_2",
+            "data": {
+                "menuName": "我的任务",
+                "menuCode": "BusProject",
+            },
+            "childTreeNode": []
+        }, {
+            "id": "1_3",
+            "data": {
+                "menuName": "人员周报",
+                "menuCode": "BusProject",
+            },
+            "childTreeNode": []
+        }]
+    }, {
+        "id": "2",
+        "data": {
+            "menuName": "数据统计",
+            "menuCode": "BusClock",
+        },
+        "childTreeNode": []
+    }, {
+        "id": "3",
+        "data": {
+            "menuName": "人事管理",
+            "menuCode": "",
+        },
+        "childTreeNode": []
+    }, {
+        "id": "4",
+        "data": {
+            "menuName": "基础管理",
+            "menuCode": "",
+        },
+        "childTreeNode": []
+    }];
   export default {
     name: 'app',
     data() {
@@ -37,19 +90,23 @@
 						{
 							vLay: [
 								"400",
-								"auto"
+							  "auto"
 							],
 						}
 					],
-				}
+				},
+        treeData:data
       }
     },
     components: {
       MyApp,
       MyList,
-      MyTable,
+      MyLayout,
+      MyTree,
     }
   }
+
+  
 </script>
 
 <style>

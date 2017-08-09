@@ -1,15 +1,16 @@
 <template>
 		<div>
-			<div v-for="item in (test.vLay||test.hLay)" v-if="isObj(item)">
-				<my-table :test="item"></my-table>
-			</div>
-			<div v-else></div>
+			<template v-for="item in (test.vLay||test.hLay)" >
+				<my-layout v-if="isObj(item)" :test="item"></my-layout>
+				<div v-else><my-app></my-app></div>
+			</template>
 		</div>
 </template>
 
 <script type="text/javascript">
+   import MyApp from "./MyApp.vue";
 	export default {
-		name: "MyTable",
+		name: "MyLayout",
 		props: ['test'],
 		data(){
 			return {}
@@ -36,6 +37,9 @@
 		},
 		computed: {
 
+		},
+		components: {
+			MyApp
 		}
 	}
 </script>
