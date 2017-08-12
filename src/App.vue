@@ -197,6 +197,6 @@ ul, menu, dir {
     -webkit-margin-after: 1em;
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
-    -webkit-padding-start: 40px;
+    -webkit-padding-start: 10px;
 }
 </style>
