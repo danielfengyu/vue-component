@@ -2,7 +2,7 @@
 		<div>
 			<template v-for="item in (test.vLay||test.hLay)" >
 				<my-layout v-if="isObj(item)" :test="item"></my-layout>
-				<div v-else><my-app></my-app></div>
+				<div v-else><my-app @msgfromchild="printChildMsg"></my-app></div>
 			</template>
 		</div>
 </template>
@@ -33,6 +33,9 @@
 					return obj.vLay;
 				}
 				return [];
+			},
+			printChildMsg:function(data){
+				alert(data);
 			}
 		},
 		computed: {

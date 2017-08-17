@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <div @click='toggle'>
+        <div @click='toggle' @mouseover="print(treeData.data.menuName)">
             <i v-if='isFolder' class="fa " :class="[open?'fa-folder-open':'fa-folder']"></i>
             <i v-if='!isFolder' class="fa fa-file-text"></i> {{treeData.data.menuName}}
         </div>
@@ -30,13 +30,14 @@
                     this.open = !this.open
                 }
             },
+            print:function(name){
+                alert(name);
+            }
         },
 
     }
 </script>
 
 <style>
-body {
-    background-color: #fea123
-}
+
 </style>
