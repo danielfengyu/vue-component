@@ -37,13 +37,40 @@
       return {
         msg: 'Welcome to Daniel\'s blog',
         layoutObj: {
-					hLay: [
-						"400",
+          id:"layer1",
+          size:"100%",
+          layout:"hLay",
+					lays: [
 						{
-							vLay: [
-								"400",
-							  "auto"
-							],
+              id:"layer2-1",
+              size:"400",
+              layout:"vLay",
+              lays: [
+                  {
+                      id:"layer3-1",
+                      size:"400",
+                      layout:"vLay",
+                      lays: [
+
+                      ]
+                  },
+                  {
+                      id:"layer3-2",
+                      size:"400",
+                      layout:"vLay",
+                      lays: [
+
+                      ]
+                  }
+              ]
+            },
+						{
+							id:"layer2-2",
+              size:"auto",
+              layout:"hLay",
+              lays: [
+
+              ]
 						}
 					],
 				},

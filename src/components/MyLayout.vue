@@ -1,8 +1,8 @@
 <template>
-		<div>
-			<template v-for="item in (test.vLay||test.hLay)" >
-				<my-layout v-if="isObj(item)" :test="item"></my-layout>
-				<div v-else><my-app @msgfromchild="printChildMsg"></my-app></div>
+		<div :id="test.id">
+			<template v-for="item in test.lays" >
+				<my-layout v-if="hasChildLayout(item)" :test="item"></my-layout>
+				<div v-else :id="item.id"><my-app @msgfromchild="printChildMsg"></my-app></div>
 			</template>
 		</div>
 </template>
@@ -16,23 +16,8 @@
 			return {}
 		},
 		methods: {
-			hasLayObj: function(obj){
-				if(obj.hasOwnProperty("hLay")||obj.hasOwnProperty("vLay")){
-					return true;
-				}
-				return false;
-			},
-			isObj: function(item){
-				return typeof item === "object";
-			},
-			layoutArr:function(ob){
-				if(obj.hasOwnProperty("hLay")){
-					return obj.hLay;
-				}
-				if(obj.hasOwnProperty("vLay")){
-					return obj.vLay;
-				}
-				return [];
+			hasChildLayout:function(layout){
+				return layout.lays.length > 0;
 			},
 			printChildMsg:function(data){
 				alert(data);
